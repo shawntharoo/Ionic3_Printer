@@ -4,14 +4,86 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+
+
+  <ion-toolbar>
+    <ion-title>
+      <b>Order</b>
+    </ion-title>
+  </ion-toolbar>
+
+
+
+  <ion-item>
+    <ion-label>
+      <b>Hardware Name</b>
+    </ion-label>
+    <ion-select [(ngModel)]="cement">
+      <ion-option value="f">Sanstha</ion-option>
+      <ion-option value="m">Marine</ion-option>
+    </ion-select>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label>
+      <b>Date</b>
+    </ion-label>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+
+
+  <ion-list radio-group [(ngModel)]=" PayingType">
+
+    <ion-list-header>
+      Paying Type
+    </ion-list-header>
+
+    <ion-item class="on-list">
+      <ion-label>Cash</ion-label>
+      <ion-radio value="cord"></ion-radio>
+    </ion-item>
+
+    <ion-item class="on-list">
+      <ion-label>Check</ion-label>
+      <ion-radio value="duesenberg"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+  <ion-item>
+    <ion-label color="primary" floating>Check Number</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Bank Code</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Branch Code</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary">
+      Check Date
+    </ion-label>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+
+    <ion-label>
+      <b>Amount</b>
+    </ion-label>
+    <ion-input style="padding-left: 60px;" placeholder="Add quantity"></ion-input>
+  </ion-item>
+
+
+
+  <button style="margin: inherit" ion-button block>Submit
+  </button>
+
 </ion-content>
