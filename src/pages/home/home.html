@@ -1,15 +1,15 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>LLLLLLLLLLLLLLLLLLLLLLLLLLLL</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content> 
 
 
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>
-      <b>Order</b>
+      <b>Payment</b>
     </ion-title>
   </ion-toolbar>
 
@@ -19,11 +19,18 @@
     <ion-label>
       <b>Hardware Name</b>
     </ion-label>
-    <ion-select [(ngModel)]="cement">
-      <ion-option value="f">ABCD</ion-option>
-      <ion-option value="m">ABCDddd</ion-option>
-    </ion-select>
-  </ion-item>
+    </ion-item>
+
+
+  <ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="onInput($event)"></ion-searchbar>
+  
+
+
+
+  
 
 
   <ion-item>
@@ -34,39 +41,39 @@
   </ion-item>
 
 
-  <ion-list radio-group [(ngModel)]=" PayingType">
+  <ion-list radio-group [(ngModel)]=" PayingType"color="secondary">
 
     <ion-list-header>
       Paying Type
     </ion-list-header>
 
-    <ion-item class="on-list">
+    <ion-item class="on-list" ng-model-options="">
       <ion-label>Cash</ion-label>
-      <ion-radio value="cord"></ion-radio>
+      <ion-radio value="cash"></ion-radio>
     </ion-item>
 
     <ion-item class="on-list">
       <ion-label>Check</ion-label>
-      <ion-radio value="duesenberg"></ion-radio>
+      <ion-radio value="check"></ion-radio>
     </ion-item>
 
   </ion-list>
-  <ion-item>
+  <ion-item *ngIf="PayingType == 'check'">
     <ion-label color="primary" floating>Check Number</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="PayingType == 'check'">
     <ion-label color="primary" floating>Bank Code</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="PayingType == 'check'">
     <ion-label color="primary" floating>Branch Code</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="PayingType == 'check'">
     <ion-label color="primary">
       Check Date
     </ion-label>
@@ -78,7 +85,7 @@
     <ion-label>
       <b>Amount</b>
     </ion-label>
-    <ion-input style="padding-left: 60px;" placeholder="Add quantity"></ion-input>
+    <ion-input style="padding-left: 126px;" placeholder="Add quantity"></ion-input>
   </ion-item>
 
 
