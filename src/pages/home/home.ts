@@ -10,6 +10,9 @@ import { Printer, PrintOptions } from '@ionic-native/printer';
 })
 export class HomePage {
   selectedPrinter: any = [];
+  items = ["asdas", "saff", "hdhfd", "zjndnf"];
+  hardwares=[];
+  myInput:any;
 
   constructor(public navCtrl: NavController, private modalCtrl: ModalController,
     private printProvider: PrintProvider,
@@ -111,6 +114,26 @@ export class HomePage {
     else {
       let foo = this.printProvider.testPrint(id);
     }
+  }
+
+  // onInput(searchTerm){
+  //   return this.items.filter((item) => {
+  //     return item.toLowerCase().indexOf(searchTerm.target.value.toLowerCase()) > -1;
+  // }); 
+  // }
+
+    onInput(searchTerm){
+      this.hardwares = [];
+     this.items.filter((item) => {
+      if (item.toLowerCase().indexOf(searchTerm.target.value.toLowerCase()) > -1){
+        this.hardwares.push(item);
+      }
+  }); 
+  }
+
+  fillBox(selHard){
+    this.myInput = selHard;
+    this.hardwares = null;
   }
 
 }
