@@ -26,7 +26,7 @@
   [(ngModel)]="myInput"
   [showCancelButton]="shouldShowCancel"
   (ionInput)="onInput($event)"></ion-searchbar>
-  <ion-item  *ngFor="let hardware of hardwares" (click)="fillBox(hardware)">
+  <ion-item class="loadList" *ngFor="let hardware of hardwares" (click)="fillBox(hardware)">
     <ion-label>
       <b>{{hardware}}</b>
     </ion-label>
