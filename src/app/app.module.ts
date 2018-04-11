@@ -8,6 +8,7 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
 import {PrinterListModalPage} from '../pages/printer-list-modal/printer-list-modal';
 import { PrintProvider } from '../providers/print/print';
 
@@ -20,6 +21,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     HomePage,
     TabsPage,
+    LoginPage,
     PrinterListModalPage
   ],
   imports: [
@@ -33,6 +35,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     HomePage,
     TabsPage,
+    LoginPage,
     PrinterListModalPage
   ],
   providers: [
