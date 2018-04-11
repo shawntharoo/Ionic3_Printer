@@ -38,7 +38,7 @@ $colors: (
   secondary:  #f3ebef,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       rgb(163, 161, 161)
+  dark:       rgb(48, 45, 45)
 );
 
 
@@ -53,6 +53,8 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+
+$datetime-md-placeholder-color: color($colors, danger);
 
 
 
