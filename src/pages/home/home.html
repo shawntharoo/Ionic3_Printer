@@ -1,52 +1,32 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>LLLLLLLLLLLLLLLLLLLLLLLLLLLL</ion-title>
+    <ion-title>Payment</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content> 
-
-
-  <ion-toolbar color="secondary">
-    <ion-title>
-      <b>Payment</b>
-    </ion-title>
-  </ion-toolbar>
-
-
+<ion-content>
 
   <ion-item>
     <ion-label>
       <b>Hardware Name</b>
     </ion-label>
-    </ion-item>
+  </ion-item>
 
-
-  <ion-searchbar
-  [(ngModel)]="myInput"
-  [showCancelButton]="shouldShowCancel"
-  (ionInput)="onInput($event)"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)"></ion-searchbar>
   <ion-item class="loadList" *ngFor="let hardware of hardwares" (click)="fillBox(hardware)">
     <ion-label>
       <b>{{hardware}}</b>
     </ion-label>
   </ion-item>
-  
-
-
-
-  
-
 
   <ion-item>
     <ion-label>
       <b>Date</b>
     </ion-label>
-    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="myDate"></ion-datetime>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="hardware_details.myDate"></ion-datetime>
   </ion-item>
 
-
-  <ion-list radio-group [(ngModel)]=" PayingType"color="secondary">
+  <ion-list radio-group [(ngModel)]="hardware_details.PayingType" color="secondary">
 
     <ion-list-header>
       Paying Type
@@ -63,49 +43,46 @@
     </ion-item>
 
   </ion-list>
-  <ion-item *ngIf="PayingType == 'check'">
+  <ion-item *ngIf="hardware_details.PayingType == 'check'">
     <ion-label color="primary" floating>Check Number</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="hardware_details.check_no"></ion-input>
   </ion-item>
 
-  <ion-item *ngIf="PayingType == 'check'">
+  <ion-item *ngIf="hardware_details.PayingType == 'check'">
     <ion-label color="primary" floating>Bank Code</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="hardware_details.bank_code"></ion-input>
   </ion-item>
 
-  <ion-item *ngIf="PayingType == 'check'">
+  <ion-item *ngIf="hardware_details.PayingType == 'check'">
     <ion-label color="primary" floating>Branch Code</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="hardware_details.branch_code"></ion-input>
   </ion-item>
 
-  <ion-item *ngIf="PayingType == 'check'">
+  <ion-item *ngIf="hardware_details.PayingType == 'check'">
     <ion-label color="primary">
       Check Date
     </ion-label>
-    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="myDate"></ion-datetime>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="hardware_details.checkDate"></ion-datetime>
   </ion-item>
 
   <ion-item>
-
     <ion-label>
       <b>Amount</b>
     </ion-label>
-    <ion-input style="padding-left: 126px;" placeholder="Add quantity"></ion-input>
+    <ion-input style="padding-left: 126px;" placeholder="Add quantity" [(ngModel)]="hardware_details.amount"></ion-input>
   </ion-item>
 
-
-
-  <button style="margin: inherit" ion-button block>Submit
+  <button style="margin: inherit" ion-button block (click)="listBTDevice()">Submit
   </button>
 
 
-    Printer Selected:
-    <ion-item>{{selectedPrinter.name}}</ion-item>
-    <ion-item>
-      <button ion-item (tap)="listBTDevice()">
-        Select Printer
-      </button>
-    </ion-item>
+  Printer Selected:
+  <ion-item>{{selectedPrinter.name}}</ion-item>
+  <ion-item>
+    <button ion-item (tap)="listBTDevice()">
+      Select Printer
+    </button>
+  </ion-item>
   <ion-item>
     <button ion-item (tap)="testConnectPrinter()">
       Test Connection

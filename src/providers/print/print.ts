@@ -20,26 +20,26 @@ export class PrintProvider {
 
   }
 
-  testPrint(address)
+  testPrint(address, printData, hardware)
   {
-    let printData="Test hello this is a test \n\n\n\n Hello Test 123 123 123\n\n\n"
+    //printData="Test hello this is a test \n\n\n\n Hello Test 123 123 123\n\n\n"
+    let formattedData = "Hardware : "+hardware +"\nDate : "+ printData.myDate + "\nPayed Mathod : " + printData.PayingType + "\nCheck Number : " + printData.check_no + "\nBank Code : " + printData.bank_code + "\nBranch Code : " + printData.branch_code + "\nCheck Date : " + printData.checkDate + "\nAmount : " + printData.amount;
 
+    console.log(formattedData);
     
     let xyz=this.connectBT(address).subscribe(data=>{
-      this.btSerial.write(printData).then(dataz=>{
+      this.btSerial.write(formattedData).then(dataz=>{
         console.log("WRITE SUCCESS",dataz);
-
         let mno=this.alertCtrl.create({
           title:"Print SUCCESS!",
           buttons:['Dismiss']
         });
         mno.present();
-
         xyz.unsubscribe();
       },errx=>{
         console.log("WRITE FAILED",errx);
         let mno=this.alertCtrl.create({
-          title:"ERROR "+errx,
+          title:"Print ERROR "+errx,
           buttons:['Dismiss']
         });
         mno.present();
@@ -47,7 +47,7 @@ export class PrintProvider {
       },err=>{
         console.log("CONNECTION ERROR",err);
         let mno=this.alertCtrl.create({
-          title:"ERROR "+err,
+          title:"Connection ERROR "+err,
           buttons:['Dismiss']
         });
         mno.present();
