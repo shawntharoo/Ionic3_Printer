@@ -8,13 +8,12 @@ export class dataService {
   data: any;
   constructor(public http: Http) {
     this.data = null;
-    this.getItems();
   }
 
 
-  getItems() {
+  getLoggedinUser(userData) {
     return new Promise(resolve => {
-      this.http.get('http://localhost:8080/api/items')
+      this.http.post('http://localhost:8080/api/user' , userData)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

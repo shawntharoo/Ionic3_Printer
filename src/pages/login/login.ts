@@ -9,15 +9,19 @@ import { Http, Response } from '@angular/http';
   templateUrl: 'login.html'
 })
 export class LoginPage {
+  user = {
+    email : '',
+    password : ''
+  }
 
   constructor(public navCtrl: NavController, private http: Http, public dataservice : dataService) {
-    this.dataservice.getItems().then((res) => {
-      console.log(res);
-    })
   }
 
   login(){
-    this.navCtrl.push(TabsPage, {}, {animate: false});
+    this.dataservice.getLoggedinUser(this.user).then((loggeduser) => {
+      
+    })
+    //this.navCtrl.push(TabsPage, {}, {animate: false});
   }
 
 }
