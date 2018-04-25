@@ -19,7 +19,7 @@ export class LoginPage {
 
   login(){
     this.dataservice.getLoggedinUser(this.user).then((loggeduser) => {
-      
+      console.log(loggeduser);
     })
     //this.navCtrl.push(TabsPage, {}, {animate: false});
   }

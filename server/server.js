@@ -27,18 +27,8 @@ var User = mongoose.model('User', {
     password: String,
 });
 
-app.get('/api/items', function (req, res) {
-    console.log("fetching items");
-    User.find({}).sort({ priority: 1 }).exec(function (err, items) {
-        if (err)
-            res.send(err)
-
-        res.json(items);
-    });
-});
-
 app.post('/api/user', function (req, res) {
-    User.find({ email: req.body.email, password: req.body.password }).exec(function (err, items) {
+    User.findOne({ email: req.body.email, password: req.body.password }).exec(function (err, items) {
         if (err)
             res.send(err)
 

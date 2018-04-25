@@ -10,7 +10,6 @@ export class dataService {
     this.data = null;
   }
 
-
   getLoggedinUser(userData) {
     return new Promise(resolve => {
       this.http.post('http://localhost:8080/api/user' , userData)
