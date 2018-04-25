@@ -11,9 +11,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import {PrinterListModalPage} from '../pages/printer-list-modal/printer-list-modal';
 import { PrintProvider } from '../providers/print/print';
+import { dataService } from '../providers/dataservice';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     IonicPageModule.forChild(PrinterListModalPage),
   ],
@@ -44,7 +47,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BluetoothSerial,
     PrintProvider,
-    Printer
+    Printer,
+    dataService
   ]
 })
 export class AppModule {}
