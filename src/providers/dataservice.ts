@@ -21,4 +21,14 @@ export class dataService {
     });
   }
 
+  getUserHardwares(currentUser) {
+    return new Promise(resolve => {
+      this.http.get('http://localhost:8080/api/hardwares' + currentUser.email)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      })
+    })
+  }
+
 }

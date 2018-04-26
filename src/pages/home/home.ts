@@ -4,6 +4,7 @@ import { PrintProvider } from '../../providers/print/print';
 import { PrinterListModalPage } from '../printer-list-modal/printer-list-modal';
 import { Printer, PrintOptions } from '@ionic-native/printer';
 import { loginService } from '../../providers/loginservice';
+import { dataService } from '../../providers/dataservice';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,7 @@ import { loginService } from '../../providers/loginservice';
 })
 export class HomePage {
   selectedPrinter: any = [];
-  items = ["asdas", "saff", "hdhfd", "zjndnf"];
+  items: any = ["asdas", "saff", "hdhfd", "zjndnf"];
   hardwares = [];
   myInput: any;
   hardware_details = {
@@ -29,8 +30,16 @@ export class HomePage {
     private printProvider: PrintProvider,
     private alertCtrl: AlertController,
     private printer: Printer,
-    public loginservice: loginService) {
-      this.loggedInUser = this.loginservice.getLoggedinUser();
+    public loginservice: loginService,
+    public dataservice: dataService) {
+
+    this.loginservice.getLoggedinUser().then((loggedUser) => {
+      this.loggedInUser = loggedUser;
+      this.dataservice.getUserHardwares(this.loggedInUser).then((hardwares) => {
+        this.items = hardwares;
+      })
+    })
+    
   }
 
   listBTDevice() {

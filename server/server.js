@@ -27,8 +27,22 @@ var User = mongoose.model('User', {
     password: String,
 });
 
+var Hardware = mongoose.model('Hardware' , {
+    email : String,
+    hardware : [String],
+})
+
 app.post('/api/user', function (req, res) {
     User.findOne({ email: req.body.email, password: req.body.password }).exec(function (err, items) {
+        if (err)
+            res.send(err)
+
+        res.json(items);
+    });
+});
+
+app.get('/api/hardwares/:email', function (req, res) {
+    Hardware.find({ email: req.params.email}).exec(function (err, items) {
         if (err)
             res.send(err)
 

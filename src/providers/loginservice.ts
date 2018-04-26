@@ -15,7 +15,9 @@ export class loginService {
   }
 
   getLoggedinUser() {
-      return this.user;
+    return new Promise(resolve => {
+      resolve(this.user);
+    });
   }
 
 }
