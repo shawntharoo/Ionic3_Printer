@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import {PrinterListModalPage} from '../pages/printer-list-modal/printer-list-modal';
 import { PrintProvider } from '../providers/print/print';
 import { dataService } from '../providers/dataservice';
+import { loginService } from '../providers/loginservice';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -48,7 +49,8 @@ import { HttpModule } from '@angular/http';
     BluetoothSerial,
     PrintProvider,
     Printer,
-    dataService
+    dataService,
+    loginService
   ]
 })
 export class AppModule {}

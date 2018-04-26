@@ -3,6 +3,7 @@ import { NavController, ModalController, AlertController } from 'ionic-angular';
 import { PrintProvider } from '../../providers/print/print';
 import { PrinterListModalPage } from '../printer-list-modal/printer-list-modal';
 import { Printer, PrintOptions } from '@ionic-native/printer';
+import { loginService } from '../../providers/loginservice';
 
 @Component({
   selector: 'page-home',
@@ -14,24 +15,26 @@ export class HomePage {
   hardwares = [];
   myInput: any;
   hardware_details = {
-    PayingType : '',
-    myDate : '',
-    check_no : '',
-    bank_code : '',
-    branch_code : '',
-    checkDate : '',
-    amount : ''
+    PayingType: '',
+    myDate: '',
+    check_no: '',
+    bank_code: '',
+    branch_code: '',
+    checkDate: '',
+    amount: ''
   };
+  loggedInUser;
 
   constructor(public navCtrl: NavController, private modalCtrl: ModalController,
     private printProvider: PrintProvider,
     private alertCtrl: AlertController,
-    private printer: Printer) {
-
+    private printer: Printer,
+    public loginservice: loginService) {
+      this.loggedInUser = this.loginservice.getLoggedinUser();
   }
 
   listBTDevice() {
-    let formattedData = "Hardware : "+this.myInput +"\nDate : \t"+ this.hardware_details.myDate + "\nPayed Mathod : \t" + this.hardware_details.PayingType + "\nCheck Number : \t" + this.hardware_details.check_no + "\nBank Code : \t" + this.hardware_details.bank_code + "\nBranch Code : \t" + this.hardware_details.branch_code + "\nCheck Date : \t" + this.hardware_details.checkDate + "\nAmount : \t" + this.hardware_details.amount;
+    let formattedData = "Hardware : " + this.myInput + "\nDate : \t" + this.hardware_details.myDate + "\nPayed Mathod : \t" + this.hardware_details.PayingType + "\nCheck Number : \t" + this.hardware_details.check_no + "\nBank Code : \t" + this.hardware_details.bank_code + "\nBranch Code : \t" + this.hardware_details.branch_code + "\nCheck Date : \t" + this.hardware_details.checkDate + "\nAmount : \t" + this.hardware_details.amount;
 
     console.log(formattedData);
     this.printProvider.searchBt().then(datalist => {
